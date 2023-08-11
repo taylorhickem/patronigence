@@ -42,9 +42,9 @@ def test01_notion_get_reviews(pos_args=None, db_name='', page_count=0):
         DB_NAME = db_name
         PAGE_COUNT = page_count
     response = RESPONSE_DEFAULT.copy()
-    notion.load()
-    database_id = notion.USER_DATA['databases'][DB_NAME]['id']
-    pages = notion.get_pages(database_id, num_pages=PAGE_COUNT)
+    api = notion.NotionWorkspace()
+    database_id = api.get_user_data('database_id', DB_NAME)
+    pages = api.get_pages(database_id, num_pages=PAGE_COUNT)
     response['result'] = len(pages) > 0
     if response['result']:
         response['message'] = f'fetched {len(pages)} notion pages from {DB_NAME} database'
