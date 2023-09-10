@@ -61,7 +61,7 @@ class NotionWorkspace(object):
                 'Authorization'].format(API_TOKEN=self._API_TOKEN)
 
     def _set_url_domain(self):
-        self.URL_DOMAIN = 'https://api.notion.com/v1/'
+        self.URL_DOMAIN = f'https://api.notion.com/{VERSION}/'
 
     def get_url_endpoint(self, route_id):
         url_endpoint = self.URL_DOMAIN + URL_ROUTES[route_id]
